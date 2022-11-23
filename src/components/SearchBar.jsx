@@ -1,0 +1,25 @@
+import { Paper, TextField } from '@mui/material';
+import React, { useState } from 'react';
+
+const SearchBar = ({ onSubmit }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const handleChange = (event) => setSearchTerm(event.target.value);
+  const onKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      onSubmit(searchTerm);
+    }
+  };
+  return (
+    <Paper elevation={6} styling={{ padding: '25px' }}>
+      <TextField
+        fillWidth
+        label='Search ...'
+        value={searchTerm}
+        onChange={handleChange}
+        onKeyPress={onKeyPress}
+      />
+    </Paper>
+  );
+};
+
+export default SearchBar;
